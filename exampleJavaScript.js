@@ -40,7 +40,7 @@ if (someMessage == "oranges") {
 console.log("Some cool message is now: " + someCoolMessage);
 
 // swith case 
-let fruitChoices = ["oranges", "bananas", "magoes"];
+let fruitChoices = ["oranges", "bananas", "mangoes"];
 
 let fruitChoicesAsObject = {
     oranages: "oranges",
@@ -89,3 +89,19 @@ console.log(someShortCircuitLogicValue);
 let someOrCircuitMessage = someMessage || someCoolMessage || "super cool OR operator logic string"
 //                           "banana"          false                       ^^^
 console.log(someOrCircuitMessage);
+
+
+let newUser = {
+    username: "something",
+    bio: ""
+}
+
+console.log("Saving newUser to Database, doing all pre-save checks now...");
+
+let userToSave = {
+    username: newUser.username,
+    bio: newUser.bio || "Default bio here"
+}
+
+console.log("Pretend we've written this to the database:");
+console.log(userToSave);
