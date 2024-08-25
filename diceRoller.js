@@ -21,18 +21,52 @@ function rollDice(diceSize = 6) {
     let floorDiceResult = Math.floor(diceResult) + 1;
     let ceilDiceResult = Math.ceil(diceResult);
 
-    console.log(floorDiceResult, ceilDiceResult);
+    // console.log(floorDiceResult, ceilDiceResult);
+    return floorDiceResult;
 }
 
 // rollDice(); // dice size is 6 (default value)
-rollDice(20);
+// rollDice(20);
 // rollDice(1000);
 
 
 // function that rolls a dice and the dice is a 6-sided dice
 // specific dice roller function that calls the generic function
+const rollD6 = () => rollDice(6);
 
+console.log("rollD6 function result is " + rollD6());
 
 
 // function that rolls a dice and the dice is a 20-sided dice
 // specific dice roller function that calls the generic function
+
+const rollD20 = () => {
+    // let diceResult = rollDice(20);
+    // return diceResult;
+
+    return rollDice(20);
+}
+
+let superAwesomeDiceResult = rollD20();
+console.log("Super awesome dice result is: " + superAwesomeDiceResult);
+
+function rollD20WithAdvantage(){
+    let diceResults = [
+        rollD20(),
+        rollD20()
+    ];
+
+    let highestRoll = 0;
+
+    diceResults.forEach((individualResult) => {
+        if (highestRoll < individualResult){
+            highestRoll = individualResult;
+        }
+    })
+
+    console.log(diceResults);
+
+    return highestRoll;     
+}
+
+console.log("Rolling 2 D20 with advantage: " + rollD20WithAdvantage());
