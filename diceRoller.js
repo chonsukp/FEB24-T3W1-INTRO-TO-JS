@@ -1,5 +1,11 @@
-
 console.log("Dice roller file is loaded!");
+
+// close is an order of operation
+// closure because rollDice is a funtion
+console.log(rollDice(20));
+// not a closure because this is a const variable (arrow function)
+console.log(rollD20());
+
 
 // function that rolls a dice and the dice size is a parameter
 // generic dice roller function
@@ -50,23 +56,41 @@ const rollD20 = () => {
 let superAwesomeDiceResult = rollD20();
 console.log("Super awesome dice result is: " + superAwesomeDiceResult);
 
+// declare without assignment 
+let diceResults;
+
+// let (local), var (default global), const 
+
 function rollD20WithAdvantage(){
-    let diceResults = [
+    let tempDiceResults = [
         rollD20(),
         rollD20()
     ];
 
     let highestRoll = 0;
 
-    diceResults.forEach((individualResult) => {
+    tempDiceResults.forEach((individualResult) => {
         if (highestRoll < individualResult){
             highestRoll = individualResult;
         }
     })
 
-    console.log(diceResults);
+    console.log(tempDiceResults);
 
     return highestRoll;     
 }
 
 console.log("Rolling 2 D20 with advantage: " + rollD20WithAdvantage());
+
+// console.log("First roll in advantage roll is: " + diceResults[0]);
+
+// console.log(tempDiceResults);
+
+// var and let can be changed after declaration
+let diceResultChangable = rollD20();
+diceResultChangable = rollD20();
+
+// const can't be changed after declaration
+const diceResultConstant = rollD20();
+diceResultConstant = rollD20();
+
