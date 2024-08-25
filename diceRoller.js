@@ -4,13 +4,10 @@ console.log("Dice roller file is loaded!");
 // closure because rollDice is a funtion
 console.log(rollDice(20));
 // not a closure because this is a const variable (arrow function)
-console.log(rollD20());
-
+// console.log(rollD20());
 
 // function that rolls a dice and the dice size is a parameter
 // generic dice roller function
-
-
 
 /**
  * Example JSDoc comment goes here
@@ -44,13 +41,11 @@ function rollDice(diceSize = 6) {
 // rollDice(20);
 // rollDice(1000);
 
-
 /**
  * Function that rolls a dice and the dice is a 6-sided dice    
  * @returns {number}
  */
 const rollD6 = () => rollDice(6);
-
 console.log("rollD6 function result is " + rollD6());
 
 
@@ -95,7 +90,6 @@ function rollD20WithAdvantage(){
 
     return highestRoll;     
 }
-
 console.log("Rolling 2 D20 with advantage: " + rollD20WithAdvantage());
 
 // console.log("First roll in advantage roll is: " + diceResults[0]);
@@ -107,6 +101,35 @@ let diceResultChangable = rollD20();
 diceResultChangable = rollD20();
 
 // const can't be changed after declaration
-const diceResultConstant = rollD20();
-diceResultConstant = rollD20();
+// const diceResultConstant = rollD20();
+// diceResultConstant = rollD20();
 
+
+const diceRollSystem = {
+    rollDice: rollDice,
+    rollD20: rollD20,
+    rollD6: rollD6,
+    rollTwentySided: rollD20,
+    advatageD20: rollD20WithAdvantage,
+    nestedStuff: {
+        nestedRollD20: rollD20,
+        someNestedFunction: () => {
+            console.log(this.nestedRollD20());
+            console.log("Hello from a function inside a nested object");
+        },
+        // use function keyword with this
+        someNestedGoodFunction: function() {
+            console.log(this.nestedRollD20());
+            console.log("Hello from the good nested function");
+        }
+    }
+}
+//                                                             object.property
+//                                                             object.propertyFunction()
+console.log("Rolling D20 with advantage and result is: " + diceRollSystem.advatageD20());
+
+console.log(this);
+console.log(diceRollSystem.nestedStuff.someNestedGoodFunction());
+// console.log(diceRollSystem.nestedStuff.someNestedFunction());
+console.log(Object.keys(diceRollSystem));
+console.log(Object.keys(diceRollSystem.nestedStuff));
