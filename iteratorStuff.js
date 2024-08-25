@@ -57,7 +57,6 @@ let myFavouriteFruitisAvailable = fruitsChoices.includes("Watermelon");
 console.log(`My favourite fruit is available: ${myFavouriteFruitisAvailable}`);
 
 
-
 // //  while checks for condition, and then do the block of code
 // while (fruitsChoices.length > 0 ) {
 //     console.log(fruitsChoices);
